@@ -30,7 +30,7 @@ namespace Kodcamp.Controllers
         HelperMethods hM = new HelperMethods();
         #endregion
 
-        public string GetSystemInfo()
+        public string GetSystemInfo() 
         {
             SystemInfo info = nEntity.GetSystemInfo().Response as SystemInfo;
             return info.Status;

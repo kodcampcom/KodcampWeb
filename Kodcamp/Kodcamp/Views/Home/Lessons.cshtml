@@ -1,0 +1,54 @@
+﻿@model List<Kodcamp.Models.EntityModels.EntityNews>
+
+<header>
+    <link href="/forum/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+</header>
+
+<body>
+    <main id="main">
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <ol>
+                        <li><a href="/">Anasayfa</a></li>
+                        <li>Dersler ve Eğitimler</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+
+                <div class="row">
+                    @{ foreach (var item in Model)
+                        {
+            <div class="col-lg-6">
+                <div class="testimonial-item">
+                    <a href="/Haberler/@item.Url">
+                        <img src="/images/news/@item.ImageUrl" class="testimonial-img" alt="@item.Title">
+                    </a>
+                    <a href="/Haberler/@item.Url"><h3>@item.Title</h3></a>
+
+                    <h4>Kodlama &amp; Eğitim</h4>
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        @item.DetailHeader
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                </div>
+            </div> } }
+
+
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+</body>

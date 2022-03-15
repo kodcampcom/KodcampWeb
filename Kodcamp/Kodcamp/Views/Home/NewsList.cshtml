@@ -1,0 +1,116 @@
+﻿@model List<Kodcamp.Models.EntityModels.ModelNews>;
+@{
+    var news = Model;
+}
+<header>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.lazyload.js"></script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @("@media") (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+        .image {
+            position: relative;
+        }
+
+            .image img {
+                width: 100%;
+                vertical-align: top;
+                filter: blur(1px);
+            }
+
+            .image:after {
+                color: #fff;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: rgba(0,0,0,0.6);
+                opacity: 0;
+                transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+                opacity: 0.6;
+            }
+
+        .orangeBack:hover {
+            color: #F03C01;
+        }
+
+        .orangeBackground:hover {
+            background-color: #F03C01;
+        }
+
+    </style>
+</header>
+
+<body>
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <ol>
+                    <li><a href="/">Anasayfa</a></li>
+                    <li>Haberler</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <main>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    @for (int i = 0; i < news.Count; i++)
+                    {
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <a href="/Haberler/@news[i].Url" style="cursor:pointer; color:black;">
+                                    <img class="lazy bd-placeholder-img card-img-top" src="/images/genelresim.png" data-original="/images/news/@news[i].ImageUrl" alt="@news[i].Title" style="width:100%; height:225px;">
+                                    </a>
+                                    <div class="card-body">
+                                         <a href="/Haberler/@news[i].Url" style="cursor:pointer; color:black;">
+                                        <h5 class="card-text orangeBack"> @news[i].Title </h5>
+                                            </a>
+                                        <p class="card-text" style="overflow: scroll; height: 45px; overflow-y: hidden; overflow-x: hidden; ">
+                                            @news[i].DetailHeader
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" onclick="location.href='/Haberler/@news[i].Url'" class="btn btn-sm btn-outline-secondary orangeBackground">Görüntüle</button>
+                                            </div>
+                                            <small class="text-muted" style="margin-left: 30%;">👁 &nbsp @news[i].ViewedCount</small>
+                                            <small class="text-muted">
+                                                <img src="/images/heart.png" style="width:18px; height:18px;" />
+                                                @news[i].LikeCount
+                                            </small>
+                                            <small class="text-muted">
+                                                <img src="/images/unlike.png" style="width:18px; height:18px;" />
+                                                @news[i].UnlikeCount
+                                            </small>
+                                            <small class="text-muted">
+                                                <img src="/images/smile.png" style="width:18px; height:18px;" />
+                                                @news[i].SmileCount
+                                            </small>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/js/index1.js"></script>
+</body>

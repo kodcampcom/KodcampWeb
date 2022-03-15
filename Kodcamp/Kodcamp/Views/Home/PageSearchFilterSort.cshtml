@@ -1,0 +1,129 @@
+﻿@model Kodcamp.Models.VMModels.VMCategoryNews;
+@{
+    var news = Model.News;
+    var categories = Model.Categories;
+    var mainCategories = Model.MainCategories;
+    var modelEntityNews = news;
+}
+
+<head>
+    <title> KodCamp - Haber Arama ve Filtreleme </title>
+    <meta name="description" content="Tüm güncel haber ve makalelerimizde arama ve filtreleme yapabilirsiniz">
+    <meta name="keywords" content="Yazılım, Programlama, Kodlama, Haber">
+
+    <style>
+        /*search box css start here*/
+        .search-sec {
+            padding: 2rem;
+            padding-top: 3rem;
+        }
+
+        .search-slt {
+            display: block;
+            width: 100%;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            height: calc(3rem + 2px) !important;
+            border-radius: 0;
+        }
+
+        .wrn-btn {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: capitalize;
+            height: calc(3rem + 2px) !important;
+            border-radius: 0;
+        }
+
+        .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @("@media") (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+    </style>
+
+</head>
+<body>
+
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <ol>
+                    <li><a href="/">Anasayfa</a></li>
+                    <li>Detaylı Ara</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <main>
+        <section class="search-sec" style="margin-top:50px;">
+            <div class="container">
+                <form action="#" method="post" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                    <input id="search" type="text" value="" class="form-control search-slt" placeholder="Enter Search" onkeyup="SearchText();">
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                    <select class="form-control search-slt" id="mainCategory" onchange="changeCategoryBySubCategory();">
+                                        <option value="-1"> Kategori Seçiniz </option>
+                                        @{
+                                            foreach (var item in mainCategories)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        }
+
+
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                    <select class="form-control search-slt" id="subCategory" onchange="filterByCategory();">
+                                        <option value="-1"> Alt Kategori Seçiniz </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                    <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                                </div>
+
+                                <div class="col-lg-6 col-md-3 col-sm-12 p-0" id="searchBarDiv">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        @*Haber Kartaları*@
+        <div id="cardsDiv">
+        </div>
+    </main>
+
+    <script>
+
+        var modelCategories = @Html.Raw(Json.Serialize(categories));
+        var modelMainCategories = @Html.Raw(Json.Serialize(mainCategories));
+        var modelNews = @Html.Raw(Json.Serialize(modelEntityNews));
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/js/getCategoryBySub.js"></script>
+</body>

@@ -1,0 +1,126 @@
+﻿@model List<Kodcamp.Models.AnswerQuestion.ModelQuestionCategories>;
+@{
+    var categories = Model;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Dashboard Template · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/ckEditor/ckeditor.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @("@media") (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <ol>
+                    <li><a href="/">Anasayfa</a></li>
+                    <li><a href="/questions">Sorular</a></li>
+                    <li>Soru Sor</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="container" style="margin-bottom:10vh;">
+        <div class="row">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="mainId">
+                <br />
+                <form method="post" action="">
+
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2"> Kategori </label>
+                        <select class="form-select form-select-lg mb-3" name="categoryId">
+                            @{
+                                <option value="-1"> Lütfen kategori seçiniz</option>
+                                foreach (var item in categories)
+                                {
+                                    <option value="@item.Id">
+                                        @item.Title
+                                    </option>
+                                }
+                            }
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2"> Başlık </label>
+                        <input name="title" type="text" class="form-control" id="formGroupExampleInput" placeholder="Başlık">
+                    </div>
+
+                    <textarea name="detail" class="form-control" id="editor1"></textarea>
+                    <script type="text/javascript">CKEDITOR.replace('editor1');</script>
+
+                    <br />
+
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2"> Etiketler (Lütfen etiketleri aralarına virül koyarak yazınız.) </label>
+                        <input name="tags" type="text" class="form-control" id="formGroupExampleInput" placeholder="javascript, razor, html etc.">
+                    </div>
+
+
+                    <div class="d-flex justify-content-center">
+
+                        <button type="submit" class="btn btn-success my-1"> Kaydet </button>
+                    </div>
+
+                </form>
+
+
+            </main>
+        </div>
+    </div>
+
+
+    <script></script>
+
+    <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/adminCategory.js"></script>
+    <script src="/js/adminAddNews.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+</body>
+</html>

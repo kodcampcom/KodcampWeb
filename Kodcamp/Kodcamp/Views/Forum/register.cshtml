@@ -1,0 +1,110 @@
+﻿@model Kodcamp.Models.Response.ModelResponse;
+@{
+    var response = Model;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+</head>
+
+<style>
+    .gradient-custom-2 {
+        /* fallback for old browsers */
+        background: #fccb90;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    }
+
+    @@media (min-width: 768px) {
+        .gradient-form {
+            height: 100vh !important;
+        }
+    }
+
+    @@media (min-width: 769px) {
+        .gradient-custom-2 {
+            border-top-right-radius: .3rem;
+            border-bottom-right-radius: .3rem;
+        }
+    }
+</style>
+<body>
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100" style="margin-top: -10vh;">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+
+                                    <div class="text-center">
+                                        <img src="/images/kodcampLogo.png" style="width: 185px;" alt="logo">
+                                    </div>
+
+                                    <form method="post" action="">
+
+                                        <div class="form-outline mb-4">
+                                            <input name="userName" value="" type="text" id="form2Example11" class="form-control" placeholder="Kullanıcı adınızı giriniz." />
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <input name="password" value="" type="password" id="form2Example22" class="form-control" placeholder="Şifrenizi giriniz." />
+                                        </div>
+
+                                        <div class="text-center pt-1 mb-5 pb-1">
+                                            <input type="submit" value="    KAYIT OL    " class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">GİRİŞ YAPIN</h4>
+                                    <p class="small mb-0">Lütfen kullanıcı adınız ve şifrenizle giriş yapınız. Üyelik için telefon numarası ve mail bilgileriniz istenmemektedir. Parolalarınız veritabanımızda şifrelenmiş bir şekilde tutulmaktadır. Ancak, verilerinizin kaybı ve güvenliği ile ilgili Kodcamp.com bir sorumluluk kabul etmemektedir. Lütfen bunu onaylayarak kayıt olunuz. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Hata</h5>
+                    <button onclick="hidePopUp();" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align:left;">
+                    Bu isim ile daha önceden kayıt olunmuş. Lütfen farklı bir kullanıcı adı ile tekrar deneyiniz. Ya da giriş yapınız.
+                </div>
+                <div class="modal-footer">
+                    <button onclick="window.location.href='/forum/login/-1/-1'" ; return false;" type="button" class="btn btn-success">Giriş Yap</button>
+                    <button onclick="hidePopUp(); return false;" type="button" class="btn btn-secondary">Tekrar Dene</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var status = @Html.Raw(Json.Serialize(Model.Status));
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="/js/login.js"></script>
+    <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

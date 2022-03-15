@@ -1,0 +1,272 @@
+﻿@model Kodcamp.Models.VMModels.VMQuestionCategoryTags;
+@{
+    var questions = Model.Questions;
+    var tags = Model.TagsKeyValue;
+    var categories = Model.QuestionCategories;
+    var answers = questions[0].Answers;
+    var news = Model.News;
+}
+<header>
+    <script type="text/javascript" src="/ckEditor/ckeditor.js"></script>
+    <style>
+        .tagButton {
+            color: #6c727c;
+            background-color: rgba(121,127,135,.1);
+            border: 1px;
+            font-size: 12px;
+            border: 1px solid rgba(121,127,135,.05);
+            transition: all .2s;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .tagButton2 {
+            color: #2C5877;
+            background-color: #D0E3F1;
+            border: 1px;
+            font-size: 12px;
+            border: 1px solid rgba(121,127,135,.05);
+            transition: all .2s;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .tagButton:hover {
+            background-color: #BFC5CC;
+        }
+
+        .tagButton2:hover {
+            background-color: #6384b8;
+        }
+
+        .imgShadow {
+            border-radius: 200px 200px 200px 200px;
+            -moz-border-radius: 200px 200px 200px 200px;
+            -webkit-border-radius: 200px 200px 200px 200px;
+            border: 2px solid #e3b132;
+        }
+
+        .p3Font {
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+    </style>
+</header>
+<body>
+    <main id="main">
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <ol>
+                        <li><a href="/">Anasayfa</a></li>
+                        <li><a href="/sorular">Sorular</a></li>
+                        <li>@questions[0].Title</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
+                <div class="col-lg-3" style="margin-bottom:5vh;">
+                    <button onclick="window.location.href='/Questions/AddQuestion'" class="btn btn-danger"> Soru Sor </button>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 entries">
+                        @{
+                            for (int i = 0; i < questions.Count; i++)
+                            {
+                                <article class="entry articleListItems" id="@questions[i].Id">
+                                    <h1 class="entry-title p3Font" style="font-size:25px;">
+                                        <a href="#"> @questions[i].Title </a>
+                                    </h1>
+                                    <div style="margin-top:3vh;">
+                                        <p style="color: #707885;">
+                                            @Html.Raw(@questions[i].Detail)
+                                        </p>
+                                        <div>
+                                            @{
+                                                for (int k = 0; k < questions[i].TagsList.Length; k++)
+                                                {
+                                                    <button type="button" class="tagButton2">@questions[i].TagsList[k]</button>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <hr />
+                                    <div class="entry-meta" style="margin-top:3vh;">
+                                        <ul>
+                                            <li class="d-flex align-items-center">
+                                                <img class="imgShadow" src="/images/profile/@questions[i].UserPhotoUrl" style="width: 40px; height: 40px;"> <a href="#"> &nbsp &nbsp <span> <b> @questions[i].Username </b>   </span> </a>
+                                            </li>
+                                            <li></li>
+                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01"> @questions[i].DateTimeFormatted.Substring(0, questions[i].DateTimeFormatted.Length - 3) </time></a></li>
+                                            <li></li>
+                                            <li>
+                                                <i class="bi bi-chat-dots"></i> <a href="#">
+                                                    @{
+                                                        int number = 0;
+                                                        if (questions[i].Answers != null && questions[i].Answers.Count > 0)
+                                                        {
+                                                            number = questions[i].Answers.Count;
+                                                        }
+                                                    }
+                                                    @number
+                                                </a>
+                                            </li>
+                                            <li></li>
+                                            <li><i class="bi bi-eye-fill"></i> <a href="#"> @questions[i].ViewedCount </a></li>
+                                            <li></li>
+                                            <li class="d-flex align-items-center">
+                                                <a> <i class="bi bi-arrow-down-square"></i> </a>
+                                            </li>
+                                            <li class="d-flex align-items-center" style="margin-left:-15px;">
+                                                @questions[i].TotalLikeCount
+                                            </li>
+                                            <li class="d-flex align-items-center" style="margin-left:-7px;">
+                                                <a> <i class="bi bi-arrow-up-square"></i> </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            }
+                        }
+                        <h3 style="margin-top:4vh;"> @answers.Count cevap </h3>
+                        @{
+                            for (int i = 0; i < answers.Count; i++)
+                            {
+                                <article class="entry articleListItems" id="@answers[i].Id" style="margin-top:4vh;">
+                                    <div>
+                                        <p style="color: #707885; ">
+                                            @Html.Raw(answers[i].Detail)
+                                        </p>
+                                        <div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div id="txtArea" class="entry-meta" style="margin-top:1.5vh;">
+                                        <ul>
+                                            <li class="d-flex align-items-center">
+                                                <img class="imgShadow" src="/images/profile/@answers[i].UserPhotoUrl" style="width: 40px; height: 40px;"> <a href="#"> &nbsp &nbsp <span> <b> @answers[i].Username </b>   </span> </a>
+                                            </li>
+                                            <li></li>
+                                            <li class="d-flex align-items-center">
+                                                <i class="bi bi-clock"></i>
+                                                <a href="#"><time datetime="2020-01-01"> @answers[i].DateTimeFormatted.Substring(0, answers[i].DateTimeFormatted.Length - 9) </time></a>
+                                            </li>
+                                            <li class="d-flex align-items-center"> </li>
+                                            <li class="d-flex align-items-center"> </li>
+
+                                            <li class="d-flex align-items-center">
+                                                <a href="/Questions/@questions[0].Id/@answers[i].Id/2"> <i class="bi bi-arrow-down-square"></i> </a>
+                                            </li>
+                                            <li class="d-flex align-items-center" style="margin-left:-15px;">
+                                                @answers[i].TotalLikeCount
+                                            </li>
+                                            <li class="d-flex align-items-center" style="margin-left:-7px;">
+                                                <a href="/Questions/@questions[0].Id/@answers[i].Id/1"> <i class="bi bi-arrow-up-square"></i> </a>
+                                            </li>
+
+                                            <li style="margin-right:0px; margin-left:auto;">
+                                                <a href="#txtArea" onclick="GetResponse('@answers[i].Id', '@answers[i].Username');"> <img src="/images/reply2.png" style="width:20px; height:20px;" /> </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                                if (answers[i].SubAnswers != null && answers[i].SubAnswers.Count > 0)
+                                {
+                                    for (int k = 0; k < answers[i].SubAnswers.Count; k++)
+                                    {
+                                        <article class="entry articleListItems" id="@answers[i].SubAnswers[k].Id" style="background-color: #F8F6F5; margin-top:-3vh;">
+                                            <div style="margin-top:-2vh;">
+                                                <p style="color: #707885; ">
+                                                    @Html.Raw(answers[i].SubAnswers[k].Detail)
+                                                </p>
+                                            </div>
+                                            <hr />
+                                            <div id="txtArea" class="entry-meta" style="margin-top:1.5vh;">
+                                                <ul>
+                                                    <li class="d-flex align-items-center">
+                                                        <img class="imgShadow" src="/images/profile/@answers[i].SubAnswers[k].UserPhotoUrl" style="width: 40px; height: 40px;"> <a href="#"> &nbsp &nbsp <span> <b> @answers[i].SubAnswers[k].Username </b>   </span> </a>
+                                                    </li>
+                                                    <li></li>
+                                                    <li class="d-flex align-items-center">
+                                                        <i class="bi bi-clock"></i>
+                                                        <a href="#"><time datetime="2020-01-01"> @answers[i].DateTimeFormatted.Substring(0, answers[i].DateTimeFormatted.Length - 9) </time></a>
+                                                    </li>
+                                                    <li class="d-flex align-items-center"> </li>
+                                                    <li class="d-flex align-items-center"> </li>
+
+                                                    <li class="d-flex align-items-center">
+                                                        <a href="/Questions/@questions[0].Id/@answers[i].SubAnswers[k].Id/2"> <i class="bi bi-arrow-down-square"></i> </a>
+                                                    </li>
+                                                    <li class="d-flex align-items-center" style="margin-left:-15px;">
+                                                        @answers[i].SubAnswers[k].TotalLikeCount
+                                                    </li>
+                                                    <li class="d-flex align-items-center" style="margin-left:-7px;">
+                                                        <a href="/Questions/@questions[0].Id/@answers[i].SubAnswers[k].Id/1"> <i class="bi bi-arrow-up-square"></i> </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </article>
+                                    }
+                                }
+                            }
+                        }
+                        <div>
+                            <h4 id="cevapTxt" style="margin-top:6vh;">Cevabını yaz</h4>
+                        </div>
+                        <div style="margin-top:1vh;">
+                            <form method="" action="/Questions/@questions[0].Id/Add/Answer">
+                                <textarea name="detail" class="form-control" id="editor1" placeholder="Buraya yazın..."></textarea>
+                                <script type="text/javascript">CKEDITOR.replace('editor1');</script>
+                                <div class="d-flex justify-content-center" style="margin-top:3vh;">
+                                    <input id="hiddenAnswer" type="hidden" name="mainAnswerId" value="0" />
+                                    <button type="submit" class="btn btn-success my-1"> GÖNDER </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sidebar">
+                            <div class="sidebar-item ">
+                                <form>
+                                    <input type="text" class="form-control" placeholder="Ara..." onkeyup="getQuestionsBySearch(this.value);">
+                                </form>
+                            </div>
+                            <h3 style="margin-top:45px;" class="sidebar-title">Etiketler</h3>
+                            <div class="sidebar-item tags">
+                                <ul>
+                                    @foreach (var item in tags)
+                                    {
+                                        <li><a href="/sorular" style="cursor:pointer;" id="@item.Key">@item.Key (@item.Value)</a></li>
+                                    }
+                                </ul>
+                            </div>
+                            <h3 style="margin-top:45px;" class="sidebar-title">Son Gönderiler</h3>
+                            <div class="sidebar-item recent-posts">
+                                @foreach (var item in news)
+                                {
+                                    <div class="post-item clearfix">
+                                        <a href="/Haberler/@item.Url" style="cursor:pointer; color:black;">  <img src="/images/news/@item.ImageUrl" alt="@item.Title"> </a>
+                                        <h4><a href="/haberler/@item.Url">@item.Title</a></h4>
+                                        <time datetime="2020-01-01">@item.DateCreated</time>
+                                    </div>
+                                }
+                            </div>
+                            <h3 style="margin-top:45px;" class="sidebar-title">Kategoriler</h3>
+                            <div class="sidebar-item categories">
+                                <ul>
+                                    @foreach (var item in categories)
+                                    {
+                                        <li><a href="/sorular" id="@item.Id">@item.Title <span>(@item.QuestionCount)</span></a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="/js/questions.js"></script>
+</body>

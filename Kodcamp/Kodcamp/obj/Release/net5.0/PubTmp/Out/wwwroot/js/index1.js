@@ -1,0 +1,4 @@
+﻿
+    $(function () {
+        $("img.lazy").lazyload();
+    });

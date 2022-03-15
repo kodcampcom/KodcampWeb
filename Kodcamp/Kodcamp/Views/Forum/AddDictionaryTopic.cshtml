@@ -1,0 +1,63 @@
+﻿
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="d-flex justify-content-center" style="margin-top:10%; margin-bottom:20%;">
+        <form method="post" action="" style="width:700px;" onsubmit="return checkEntry();">
+            <div class="form-group">
+                <label> Konu Başlığı </label>
+                <input id="txtTitle" name="title" value="" type="text" class="form-control" placeholder="Başlık giriniz." onkeyup="checkTextLength();">
+            </div>
+            <h6 style="font-size:11px; margin-top:-12px;" id="txtLengthOfText"> <i> En fazla 40 karakter girebilirsiniz.</i> </h6>
+            <div class="form-group">
+                <label> İlk Entry </label>
+                <textarea id="txtDetail" name="detail" class="form-control" rows="3" placeholder="Konuya ait ilk entry giriniz."></textarea>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <button class="btn btn-success" type="submit" name="" value="Gönder"> GÖNDER </button>
+            </div>
+        </form>
+    </div>
+</body>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Hata</h5>
+                <button onclick="hidePopUp();" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align:left;">
+                Başlık en az 2, en fazla 40 karakterli olmalıdır.
+            </div>
+            <div class="modal-footer">
+                <button onclick="hidePopUp(); return false;" type="button" class="btn btn-success">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/entryControl.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="/js/login.js"></script>
+<script src="/assets/dist/js/bootstrap.bundle.min.js"></script>

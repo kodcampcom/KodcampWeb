@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Yazılımdan Anlamayan Mühendis</title>
+
+</head>
+<body>
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Tavsiye</h2>
+                <ol>
+                    <li><a href="/">Anasayfa</a></li>
+                    <li>Tavsiyeler</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+    <div class="container" style="width:50vw; height:10vh; margin-top: 100px;">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="mainCategory" onchange="getAdvice();">
+            <option value="-1"> Kategori Seçiniz </option>
+        </select>
+    </div>
+
+    <div class="container" style="width:70vw; height:50vh; margin-top: 100px;">
+        <div style="font-size:60px; text-align:center;" id="selectedActivity" class="alert alert-success d-none" role="alert">
+            This is a success alert—check it out!
+        </div>
+    </div>
+
+    <script src="/js/adminNews.js"></script>
+    <script src="/js/getAdvice.js"></script>
+</body>
+</html>

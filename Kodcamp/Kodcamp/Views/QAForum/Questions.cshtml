@@ -1,0 +1,188 @@
+﻿@model Kodcamp.Models.VMModels.VMQuestionCategoryTags;
+@{
+    var questions = Model.Questions;
+    var tags = Model.TagsKeyValue;
+    var categories = Model.QuestionCategories;
+    var news = Model.News;
+}
+<header>
+    <style>
+        .tagButton {
+            color: #6c727c;
+            background-color: rgba(121,127,135,.1);
+            border: 1px;
+            font-size: 12px;
+            border: 1px solid rgba(121,127,135,.05);
+            transition: all .2s;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .tagButton2 {
+            color: #2C5877;
+            background-color: #D0E3F1;
+            border: 1px;
+            font-size: 12px;
+            border: 1px solid rgba(121,127,135,.05);
+            transition: all .2s;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .tagButton:hover {
+            background-color: #BFC5CC;
+        }
+        .tagButton2:hover {
+            background-color: #6384b8;
+        }
+        .imgShadow {
+            border-radius: 200px 200px 200px 200px;
+            -moz-border-radius: 200px 200px 200px 200px;
+            -webkit-border-radius: 200px 200px 200px 200px;
+            border: 2px solid #e3b132;
+        }
+        .p3Font {
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+    </style>
+</header>
+<body>
+    <main id="main">
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <ol>
+                        <li><a href="/">Anasayfa</a></li>
+                        <li>Sorular</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
+                <div class="col-lg-3" style="margin-bottom:3vh;">
+                    <button onclick="window.location.href='/Questions/AddQuestion'" class="btn btn btn-outline-warning" style="color: #F65C28;"> Yeni Soru Sor </button>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 entries">
+                        @{
+                            for (int i = 0; i < questions.Count; i++)
+                            {
+                                if (questions[i].IsSolved == "1")
+                                {
+                                    <article class="entry articleListItems" id="@questions[i].Id">
+
+                                        <h1 class="entry-title p3Font" style="font-size:23px; ">
+                                            <a href="/sorular/@questions[i].Url"> @questions[i].Title </a>
+                                        </h1>
+                                        <div>
+                                            <p style="color: #707885; margin-top:1vh;" class="p3Font">
+                                                @Html.Raw(@questions[i].Detail)
+                                            </p>
+                                            <div>
+                                                @{
+                                                    for (int k = 0; k < questions[i].TagsList.Length; k++)
+                                                    {
+                                                        <button type="button" class="tagButton2">@questions[i].TagsList[k]</button>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="entry-meta" style="margin-top:3vh;">
+                                            <ul>
+                                                <li class="d-flex align-items-center">
+                                                    <img class="imgShadow" src="/images/profile/@questions[i].UserPhotoUrl" style="width: 50px; height: 50px;"> <a href="#"> &nbsp &nbsp <span> <b> @questions[i].Username </b>   </span> </a>
+                                                </li>
+                                                <li></li>
+                                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01"> @questions[i].DateTimeFormatted </time></a></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li><i class="bi bi-eye-fill"></i> <a href="#"> @questions[i].ViewedCount </a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="alert alert-success" role="alert" style="font-size:14px;">
+                                            <b> ÇÖZÜLDÜ </b>
+                                        </div>
+                                    </article>
+                                }
+                                else
+                                {
+                                    <article class="entry articleListItems" id="@questions[i].Id">
+                                        <h1 class="entry-title p3Font" style="font-size:23px; ">
+                                            <a href="/sorular/@questions[i].Url"> @questions[i].Title </a>
+                                        </h1>
+                                        <div>
+                                            <p style="color: #707885; margin-top:1vh;" class="p3Font">
+                                                @Html.Raw(@questions[i].Detail)
+                                            </p>
+                                            <div>
+                                                @{
+                                                    for (int k = 0; k < questions[i].TagsList.Length; k++)
+                                                    {
+                                                        <button type="button" class="tagButton2">@questions[i].TagsList[k]</button>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="entry-meta" style="margin-top:3vh;">
+                                            <ul>
+                                                <li class="d-flex align-items-center">
+                                                    <img class="imgShadow" src="/images/profile/@questions[i].UserPhotoUrl" style="width: 50px; height: 50px;"> <a href="#"> &nbsp &nbsp <span> <b> @questions[i].Username </b>   </span> </a>
+                                                </li>
+                                                <li></li>
+                                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01"> @questions[i].DateTimeFormatted </time></a></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li><i class="bi bi-eye-fill"></i> <a href="#"> @questions[i].ViewedCount </a></li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                }
+                            }
+                        }
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sidebar">
+                            <div class="sidebar-item ">
+                                <form>
+                                    <input type="text" class="form-control" placeholder="Ara..." onkeyup="getQuestionsBySearch(this.value);">
+                                </form>
+                            </div>
+                            <div class="sidebar-item tags">
+                                <ul>
+                                    @foreach (var item in tags)
+                                    {
+                                        <li><a style="cursor:pointer;" id="@item.Key" onclick="GetQuestionsByTag(this.id);">@item.Key (@item.Value)</a></li>
+                                    }
+                                </ul>
+                            </div>
+                            <h3 style="margin-top:45px;" class="sidebar-title">Son Gönderiler</h3>
+                            <div class="sidebar-item recent-posts">
+                                @foreach (var item in news)
+                                {
+                                <div class="post-item clearfix">
+                                    <a href="/Haberler/@item.Url" style="cursor:pointer; color:black;">  <img src="/images/news/@item.ImageUrl" alt="@item.Title"> </a>
+                                    <h4><a href="/Haberler/@item.Url">@item.Title</a></h4>
+                                    <time datetime="2020-01-01">@item.DateCreated</time>
+                                </div>
+                                }
+
+                                <h3 style="margin-top:45px;" class="sidebar-title">Kategoriler</h3>
+                                <div class="sidebar-item categories">
+                                    <ul>
+                                        @foreach (var item in categories)
+                                        {
+                                            <li><a id="@item.Id" onclick="GetQuestionsByCategory(this.id);" href="#">@item.Title <span>(@item.QuestionCount)</span></a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="/js/questions.js"></script>
+    <script>
+        var questions = @Html.Raw(Json.Serialize(questions));
+    </script>
+</body>

@@ -1,0 +1,288 @@
+﻿@model Kodcamp.Models.VMModels.VMIndex;
+@{
+    var programmingNews = Model.Programming;
+    var operatingSystems = Model.OperatingSystems;
+    var hardware = Model.Hardware;
+    var technology = Model.Technology;
+    var articles = Model.Articles;
+    var lessons = Model.Lessons;
+}
+
+<header>
+    <link href="/forum/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+</header>
+
+<body>
+    <style>
+        .orangeBack:hover {
+            color: #F03C01;
+        }
+        .orangeBackground:hover {
+            background-color: #F03C01;
+        }
+    </style>
+    <div class="album py-5" style="background-color: #F8F6F5">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                <div class="col">
+                    <div class="card shadow-sm ">
+                        <a href="/Haberler/akilli-ev-sitemleri-nedir" title="Kodcamp Akilli Ev Sistemleri" style="cursor:pointer; color:black;">
+                            <img class="bd-placeholder-img card-img-top" src="/images/news/akilli-ev-sitemleri-nedir-3zA.webp" alt="Kodcamp Akilli Ev Sistemleri" style="width:100%; height:225px;">
+                            </a>
+                            <div class="card-body">
+                                <a href="/Haberler/akilli-ev-sitemleri-nedir" title="Kodcamp Akilli Ev Sistemleri" style="cursor:pointer; color:black;">
+                                    <h5 class="card-text orangeBack"> Akıllı Ev Sitemleri </h5>
+                                </a>
+                                <p class="card-text">
+                                    Akıllı ev sistemleri nasıl gelişti, akıllı ev sistemlerinin geleceği nedir?
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button onclick="window.location.href='/Haberler/akilli-ev-sitemleri-nedir'" type="button" class="btn btn-sm btn-outline-secondary orangeBackground">Görüntüle</button>
+                                    </div>
+                                    <small class="text-muted" style="margin-left: 30%;">👁 &nbsp 86</small>
+                                    <small class="text-muted">
+                                        <img src="/images/heart.webp" alt="Kodcamp Begeni" style="width:18px; height:18px;" /> 5
+                                    </small>
+                                    <small class="text-muted">
+                                        <img src="/images/unlike.webp" alt="Kodcamp Elestiri" style="width:18px; height:18px;" /> 1
+                                    </small>
+                                    <small class="text-muted">
+                                        <img src="/images/smile.webp" alt="Kodcamp Tebrik" style="width:18px; height:18px;" /> 4
+                                    </small>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <a href="https://youtu.be/jzK2VOocvOM" title="Kodcamp Google Pagespeed" target="_blank">
+                            <img class="bd-placeholder-img card-img-top" src="/images/youTube.webp" alt="Kodcamp Google Score Youtube" style="width:100%; height:225px; cursor:pointer;">
+                        </a>
+                        <div class="card-body">
+                            <a href="https://youtu.be/jzK2VOocvOM" title="Kodcamp Google Pagespeed" target="_blank" style="cursor:pointer; color:black;">
+                                <h5 class="card-text orangeBack"> Google'dan 99 Puan Aldık! </h5>
+                            </a>
+                            <p class="card-text">
+                                Google'ın hız testi için kullandığı PageSpeed'de KodCamp olarak 100 üzerinden 99 puan aldık.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="https://youtu.be/jzK2VOocvOM" title="Kodcamp Google Pagespeed" target="_blank" class="btn btn-sm btn-outline-secondary orangeBackground"> İzleyin </a>
+                                </div>
+                                <small class="text-muted" style="margin-left: 30%;">👁 &nbsp 54</small>
+                                <small class="text-muted">
+                                    <img src="/images/heart.webp" alt="Kodcamp begeni" style="width:18px; height:18px;" /> 7
+                                </small>
+                                <small class="text-muted">
+                                    <img src="/images/unlike.webp" alt="Kodcamp elestiri" style="width:18px; height:18px;" /> 2
+                                </small>
+                                <small class="text-muted">
+                                    <img src="/images/smile.webp" alt="Kodcamp tebrik" style="width:18px; height:18px;" /> 5
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <a href="/Haberler/noral-makine-cevirisi" title="Kodcamp Makine Cevirisi" style="cursor:pointer; color:black;">
+                            <img class="bd-placeholder-img card-img-top" src="/images/news/noral-makine-cevirisi50F.webp" alt="Kodcamp Makine Cevirisi" style="width:100%; height:225px;">
+                            </a>
+                            <div class="card-body">
+                                <a href="/Haberler/noral-makine-cevirisi" title="Kodcamp Makine Cevirisi" style="cursor:pointer; color:black;">
+                                    <h5 class="card-text orangeBack"> Nöral Makine Çevirisi </h5>
+                                </a>
+                                <p class="card-text">
+                                    Nöral makine çevirisi nedir? Kısa tarihçesi ve gelişim süreçleri
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button onclick="window.location.href='/Haberler/noral-makine-cevirisi'" type="button" class="btn btn-sm btn-outline-secondary orangeBackground">Görüntüle</button>
+                                    </div>
+                                    <small class="text-muted" style="margin-left: 30%;">👁 &nbsp 21 </small>
+                                    <small class="text-muted">
+                                        <img src="/images/heart.webp" alt="Kodcamp" style="width:18px; height:18px;" /> 11
+                                    </small>
+                                    <small class="text-muted">
+                                        <img src="/images/unlike.webp" alt="Kodcamp" style="width:18px; height:18px;" /> 4
+                                    </small>
+                                    <small class="text-muted">
+                                        <img src="/images/smile.webp" alt="Kodcamp" style="width:18px; height:18px;" /> 9
+                                    </small>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="main">
+        <section id="cta" class="cta">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-9 text-center text-lg-left">
+                        <h3>Sitemizde şu ana kadar <span>25  </span>  soru cevaplandı.</h3>
+                        <p> Tüm karşılaştığınız problemleri forumlarımızda bir bilene sorabilirsiniz. Ya da bildiğiniz sorulara cevap verip diğer kullanıcılarımıza yardım edebilirsiniz. Üye değilseniz hemen üye olun ve katılın.</p>
+                    </div>
+                    <div class="col-lg-3 cta-btn-container text-center">
+                        <a class="cta-btn align-middle" href="/sorular">Hadi Soru Sor</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box" data-aos="fade-up">
+                            <div class="icon"><a href="/haberler" title="Kodcamp Haberler"> <i class="bi bi-newspaper"></i> </a></div>
+                            <h4 class="title"><a href="/haberler" title="Kodcamp Haberler">Güncel Haberler</a></h4>
+                            <p class="description">Yazılım ve teknoloji hakkında tüm haberlere ulaşabilir. Haberler hakkında yorumlar yapabilirsiniz.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                            <div class="icon"><a href="/makaleler" title="Kodcamp makaleler"> <i class="bi bi-card-text"></i> </a></div>
+                            <h4 class="title"><a href="/makaleler" title="Kodcamp makaleler">Makaleler</a></h4>
+                            <p class="description">Yazılım, Bilişim ve Teknoloji hakkında tüm makalelerimizi okuyabilirsiniz. Dilerseniz siz de makalenizi yazabilirsiniz. Kodcamp tarafından en geç 12 saat içinde onaylandıktan sonra yayınlanacaktır.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                            <div class="icon"><a href="/Egitimler" title="Kodcamp eğitimler"> <i class="bi bi-pencil-fill"></i> </a></div>
+                            <h4 class="title"><a href="/Egitimler" title="Kodcamp eğitimler">Eğitimler</a></h4>
+                            <p class="description">Yazılım ve kodlama ile ilgili eğitim içeriklerimizi inceleyebilirsiniz. Talepleriniz doğrultusunda içeriklerimiz arttırılacak ve güncellenecektir..</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <div class="icon"><a href="/sozluk" title="Kodcamp sözlük"> <i class="bi bi-chat-left-text-fill"></i> </a> </div>
+                            <h4 class="title"><a href="/sozluk" title="Kodcamp sözlük">Sözlük</a></h4>
+                            <p class="description">Yazılım sözlük alanımızdan tüm başlıklar altında yüzlerce girilen bilgileri okuyabilir, kendiniz de yeni bilgiler gönderebilirsiniz.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                            <div class="icon"><a href="/sorular" title="Kodcamp sorular"> <i class="bi bi-question-octagon"></i> </a></div>
+                            <h4 class="title"><a href="/sorular" title="Kodcamp sorular">Soru - Cevap</a></h4>
+                            <p class="description">Tüm karşılaştığınız problemleri forumlarımızda bir bilene sorabilirsiniz. Ya da bildiğiniz sorulara cevap verip diğer kullanıcılarımıza yardım edebilirsiniz.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                            <div class="icon"><a href="/profile" title="Kodcamp profil yönetimi"> <i class="bi bi-file-earmark-person"></i> </a></div>
+                            <h4 class="title"><a href="/profile" title="Kodcamp profil">Profil Yönetimi</a></h4>
+                            <p class="description">Profil yönetimi sayfamızdan tüm hareketlerinizi inceleyebilirsiniz. İsterseniz yayınladığınız soru ve makaleleri silebilir ve güncelleyebilirisniz.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <div class="row" data-aos="fade-up">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <ul id="portfolio-flters">
+                            <li data-filter="*" class="filter-active">Hepsi</li>
+                            <li data-filter=".filter-programming">Programlama</li>
+                            <li data-filter=".filter-hardware">Donanım</li>
+                            <li data-filter=".filter-operatingSystem">İşletim Sistemleri</li>
+                            <li data-filter=".filter-technology">Teknoloji</li>
+                            <li data-filter=".filter-lessons">Eğitimler</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row portfolio-container" data-aos="fade-up">
+                    @foreach (var item in programmingNews)
+                    {
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-programming" style="object-fit: none;">
+                            <img src="/images/news/@item.ImageUrl" class="img-fluid" alt="@item.Title" style="width:410px; height:350px;">
+                            <div class="portfolio-info">
+                                <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <h4>@item.Title</h4> </a>
+                                <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <p>@item.DetailHeader</p> </a>
+                            </div>
+                        </div>
+                    }
+
+                    @foreach (var item in hardware)
+                    {
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-hardware" style="object-fit:cover">
+                            <img src="/images/news/@item.ImageUrl" class="img-fluid" alt="@item.Title" style="width:410px; height:350px;">
+                            <div class="portfolio-info">
+                                <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <h4>@item.Title</h4> </a>
+                                <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <p>@item.DetailHeader</p> </a>
+                            </div>
+                        </div>
+                    }
+
+                    @{
+                        foreach (var item in operatingSystems)
+                        {
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-operatingSystem" style="object-fit:cover">
+                                <img src="/images/news/@item.ImageUrl" class="img-fluid" alt="@item.Title" style="width:410px; height:350px;">
+                                <div class="portfolio-info">
+                                    <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <h4>@item.Title</h4> </a>
+                                    <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <p>@item.DetailHeader</p> </a>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @{
+                        foreach (var item in technology)
+                        {
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-technology" style="object-fit:cover">
+                                <img src="/images/news/@item.ImageUrl" class="img-fluid" alt="@item.Title" style="width:410px; height:350px;">
+                                <div class="portfolio-info">
+                                    <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <h4>@item.Title</h4> </a>
+                                    <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <p>@item.DetailHeader</p> </a>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @{
+                        foreach (var item in articles)
+                        {
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-technology" style="object-fit:cover">
+                                <img src="/images/news/@item.ImageUrl" class="img-fluid" alt="@item.Title" style="width:410px; height:350px;">
+                                <div class="portfolio-info">
+                                    <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <h4>@item.Title</h4> </a>
+                                    <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <p>@item.DetailHeader</p> </a>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @{
+                        foreach (var item in lessons)
+                        {
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-technology" style="object-fit:cover">
+                                <img src="/images/news/@item.ImageUrl" class="img-fluid" alt="@item.Title" style="width:410px; height:350px;">
+                                <div class="portfolio-info">
+                                    <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <h4>@item.Title</h4> </a>
+                                    <a href="/Haberler/@item.Url" style="background-color:transparent;" title="Kodcamp @item.Title"> <p>@item.DetailHeader</p> </a>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/forum/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/forum/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+</body>

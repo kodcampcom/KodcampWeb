@@ -1,0 +1,245 @@
+﻿@model Kodcamp.Models.VMModels.VMNewsDetailTags;
+@{
+    var news = Model.News;
+    var newsList = Model.NewsList;
+    string isCommentSend = ViewData["isCommentSent"].ToString();
+    string position = ViewData["Position"].ToString();
+}
+
+<head>
+    <link href="/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" rel="stylesheet">
+    <script src="/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+</head>
+
+
+<body>
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <ol>
+                    <li><a href="/">Anasayfa</a></li>
+                    <li><a href="/haberler">Haberler</a></li>
+                    <li>@news.Title</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-8 entries">
+                    <article class="entry entry-single">
+                        <div class="entry-img">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <h1 class="entry-title">
+                                <a href="#">@news.Title</a>
+                            </h1>
+                        </div>
+                        
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">@news.DateTimeFormatted</time></a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">@news.Comments.Count()</a></li>
+                            </ul>
+                        </div>
+                        <br />
+                        <div class="entry-content">
+                            @*<img src="/images/news/@news.ImageUrl" class="img-fluid" alt="">*@
+                            @*<h2 style="margin-top:5vh;">
+                                @Html.Raw(@news.DetailHeader)
+                            </h2>*@
+                            <p>
+                                @Html.Raw(@news.Detail)
+                            </p>
+                            @{
+                                if (!string.IsNullOrEmpty(news.Code))
+                                {
+                                    @Html.Raw(@news.Code)
+                                }
+                            }
+                            <p>
+                            </p>
+                        </div>
+                        <div class="entry-footer">
+                            <i class="bi bi-folder"></i>
+                            <ul class="cats">
+                                <li><a href="/haberler">Haberler</a></li>
+                            </ul>
+                            <i class="bi bi-tags"></i>
+                            <ul class="tags">
+                                <li><a href="/sorular">Sorular</a></li>
+                                <li><a href="/makaleler">Makaleler</a></li>
+                                <li><a href="/egitimler">Eğitimler</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                    <div class="blog-comments">
+                        <div style="margin-top:7%" class="">
+                            <button id="btn1" type="button" class="btn btn-outline-secondary" onclick="return reactionRedirect('@news.Id','1')">
+                                <img src="/images/heart.png" style="width:50px; height:50px;" />
+                                <br />
+                                <span style="color:#000000; font-size: 18px;">@news.LikeCount</span>
+                            </button>
+                            <button id="btn2" style="margin-left:1%;" type="button" class="btn btn-outline-secondary" onclick="return reactionRedirect('@news.Id','2')">
+                                <img src="/images/unlike.png" style="width:50px; height:50px;" />
+                                <br />
+                                <span style="color: #000000; font-size: 18px;">@news.UnlikeCount</span>
+                            </button>
+                            <button id="btn3" style="margin-left:1%;" type="button" class="btn btn-outline-secondary" onclick="return reactionRedirect('@news.Id','3')">
+                                <img src="/images/smile.png" style="width:50px; height:50px;" />
+                                <br />
+                                <span style="color: #000000; font-size: 18px;">@news.SmileCount</span>
+                            </button>
+                            <button id="btn4" style="margin-left:1%;" type="button" class="btn btn-outline-secondary" onclick="return reactionRedirect('@news.Id','4')">
+                                <img src="/images/programmer.png" style="width:50px; height:50px;" />
+                                <br />
+                                <span style="color: #000000; font-size: 18px;">@news.CoderCount</span>
+                            </button>
+                            <button id="btn4" style="margin-left:27.5%;" class="btn btn-outline-secondary">
+                                <img src="/images/file.png" style="width:50px; height:50px;" />
+                                <br />
+                                <span style="color: #000000; font-size: 12px;">@news.ViewedCount kez görüntülendi</span>
+                            </button>
+                        </div>
+                        <section class="text-justify">
+                            <h3> Yorumlar </h3>
+                            @{
+                                if (news.Comments != null && news.Comments.Count != 0)
+                                {
+                                    @for (int i = 0; i < news.Comments.Count; i++)
+                                    {
+                                        <div class="media d-block d-md-flex mt-3" style="background-color: #E2E3E5; ">
+                                            <div class="media-body text-md-left ml-md-3 ml-0" style="margin-left:4%; margin-right:4%;">
+                                                <br />
+                                                <h6>
+                                                    @if (!string.IsNullOrEmpty(news.Comments[i].NickName))
+                                                    {
+                                                        <p style="color:blue;"> @news.Comments[i].NickName </p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p> Anonim </p>
+                                                    }
+                                                </h6>
+                                                <p> @news.Comments[i].Text </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="media d-block d-md-flex mt-3">
+                                        <div class="media-body text-md-left ml-md-3 ml-0">
+                                            <br />
+                                            <p> İlk Yorumu Siz Yapabilirsiniz.</p>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </section>
+                        <section>
+                            <form method="get" action="/News/AddComment" onsubmit="return checkParameters()">
+                                <div class="mb-5">
+                                    <div class="md-form md-outline">
+                                        <textarea required name="commentTxt" id="form76" class="md-textarea form-control" rows="4" placeholder="Yorumunuzu yazın..."></textarea>
+                                        <label for="form76"></label>
+                                    </div>
+                                    <div class="md-form md-outline">
+                                        <input name="nickName" type="text" id="form75" class="form-control" placeholder="Adınızı yazın (İsteğe bağlı)">
+                                        <label for="form75"></label>
+                                    </div>
+                                    <input type="hidden" name="newsId" value="@news.Id" />
+                                    <div class="text-center text-md-left">
+                                        <button type="submit" class="btn btn-primary btn-md">Gönder</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <div class="sidebar-item ">
+                            <form>
+                                <input type="text" class="form-control" placeholder="Ara..." onkeyup="getQuestionsBySearch(this.value);">
+                            </form>
+                        </div>
+                        <h3 style="margin-top:45px;" class="sidebar-title">Güncel Haberler</h3>
+                        <div class="sidebar-item recent-posts">
+                            @foreach (var item in newsList)
+                            {
+                                <div class="post-item clearfix">
+                                    <a href="/haberler/@item.Url">
+                                        <img src="/images/news/@item.ImageUrl" alt="">
+                                    </a>
+                                    <h4><a href="/haberler/@item.Url">@item.Title</a></h4>
+                                    <time datetime="2020-01-01">@item.DateCreated</time>
+                                </div>
+                            }
+                        </div>
+                        <h3 style="margin-top:45px;" class="sidebar-title">Kodcamp Uygulamalar</h3>
+                        <div class="sidebar-item tags">
+                            <ul>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/Kelime-Sayisi-Hesapla"> Kelime Sayısı Hesaplama Uygulaması</a></li>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/Indirim-Hesaplama"> İndirim Hesaplama Uygulaması</a></li>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/Yuzde-Hesaplama"> Yüzde Hesaplama Uygulaması</a></li>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/Kelime-Karakter-Degistirme"> Kelime Değiştirme Uygulaması </a></li>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/channels/-1"> Tartışma Kanalları </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr />
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Bilgilendirme</h5>
+                    <button onclick="hidePopUp();" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Yorumunuz kaydedildi. Onaylandıktan sonra yayınlanacaktır.
+                </div>
+                <div class="modal-footer">
+                    <button onclick="hidePopUp(); return false;" type="button" class="btn btn-primary">Tamam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Hata-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Bilgilendirme</h5>
+                    <button onclick="hidePopUp2();" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Yeksik eksik eksik
+                </div>
+                <div class="modal-footer">
+                    <button onclick="hidePopUp2(); return false;" type="button" class="btn btn-primary">Tamam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var isCommentSend = @Html.Raw(Json.Serialize(isCommentSend));
+        var hPosition = @Html.Raw(Json.Serialize(position));
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/newsDetail.js"></script>
+</body>
+
+<script>hljs.initHighlightingOnLoad();</script>

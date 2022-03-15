@@ -1,0 +1,222 @@
+﻿@model Kodcamp.Models.VMModels.VMChannels;
+@{
+    var newsList = Model.NewsList;
+    var tags = Model.TagsKeyValue;
+    double result = Convert.ToDouble(ViewData["Result"]);
+}
+
+<head>
+    <meta name="keywords" content="Yüzde hesaplama, matematik, oran, hesap, indirim">
+</head>
+
+<body>
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <ol>
+                    <li><a href="/">Anasayfa</a></li>
+                    <li>Ortalama Hesaplama</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+
+                <div class="col-lg-8 entries">
+
+                    <article class="entry">
+
+                        <div class="row">
+                            <div class="alert alert-danger" role="alert" style="text-align:center;">
+                                <h4> Ortalama Hesaplama </h4>
+                            </div>
+                            <div class="col" style="margin-top:3vh;">
+                                <input id="not1" value="0" type="text" class="form-control" placeholder="1. puanınızı giriniz (Örn: 85)">
+                            </div>
+                            <div class="col" style="margin-top:3vh;">
+                                <select id="oran1" class="form-control">
+                                    <option value="0">1. notunuzun ağırlık yüzdesini seçiniz</option>
+                                    @{
+                                        for (int i = 5; i <= 100; i += 5)
+                                        {
+                                            <option value="@i">% @i</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <input id="not2" value="0" type="text" class="form-control" placeholder="2. puanınızı giriniz (Örn: 90)">
+                            </div>
+                            <div class="col">
+                                <select id="oran2" class="form-control">
+                                    <option value="0">2. notunuzun ağırlık yüzdesini seçiniz</option>
+                                    @{
+                                        for (int i = 5; i <= 100; i += 5)
+                                        {
+                                            <option value="@i">% @i</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <input id="not3" value="0" type="text" class="form-control" placeholder="3. puanınızı giriniz (Örn: 70)">
+                            </div>
+                            <div class="col">
+                                <select id="oran3" class="form-control">
+                                    <option value="0">3. notunuzun ağırlık yüzdesini seçiniz</option>
+                                    @{
+                                        for (int i = 5; i <= 100; i += 5)
+                                        {
+                                            <option value="@i">% @i</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <input id="not4" value="0" type="text" class="form-control" placeholder="4. puanınızı giriniz (Örn: 87)">
+                            </div>
+                            <div class="col">
+                                <select id="oran4" class="form-control">
+                                    <option value="0">4. notunuzun ağırlık yüzdesini seçiniz</option>
+                                    @{
+                                        for (int i = 5; i <= 100; i += 5)
+                                        {
+                                            <option value="@i">% @i</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <input id="not5" value="0" type="text" class="form-control" placeholder="5. puanınızı giriniz (Örn: 87)">
+                            </div>
+                            <div class="col">
+                                <select id="oran5" class="form-control">
+                                    <option value="0">5. notunuzun ağırlık yüzdesini seçiniz</option>
+                                    @{
+                                        for (int i = 5; i <= 100; i += 5)
+                                        {
+                                            <option value="@i">% @i</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="d-flex justify-content-center" style="margin-top:5%;">
+                                <button onclick="calculateAvg();" style="width:300px; cursor:pointer;" type="submit" class="btn btn-success center">HESAPLA</button>
+                            </div>
+                        </div>
+
+                        <div id="divResult2" class="alert alert-success d-none" role="alert" style="text-align:center; margin-top:5vh;">
+                            <h3 id="divResultSonuc" class="d-none">  </h3>
+                        </div>
+
+                    </article><!-- End blog entry -->
+
+
+                </div><!-- End blog entries list -->
+
+                <div class="col-lg-4">
+
+                    <div class="sidebar">
+
+                        <div class="sidebar-item ">
+                            <form>
+                                <input type="text" class="form-control" placeholder="Ara..." onkeyup="getQuestionsBySearch(this.value);">
+                            </form>
+                        </div><!-- End sidebar search formn-->
+
+
+                        <h3 style="margin-top:45px;" class="sidebar-title">Uygulamalarımız</h3>
+                        <div class="sidebar-item tags">
+                            <ul>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/Kelime-Sayisi-Hesapla"> Kelime Sayısı Hesaplama Uygulaması</a></li>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/Indirim-Hesaplama"> İndirim Hesaplama Uygulaması</a></li>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/Yuzde-Hesaplama"> Yüzde Hesaplama Uygulaması</a></li>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/Kelime-Karakter-Degistirme"> Kelime Değiştirme Uygulaması </a></li>
+                                <li><a style="cursor:pointer;" href="/Uygulamalar/channels/-1"> Tartışma Kanalları </a></li>
+                            </ul>
+                        </div><!-- End sidebar tags-->
+
+                        <h3 style="margin-top:45px;" class="sidebar-title">Son Gönderiler</h3>
+                        <div class="sidebar-item recent-posts">
+                            @foreach (var item in newsList)
+                            {
+                                <div class="post-item clearfix">
+                                    <img src="/images/news/@item.ImageUrl" alt="">
+                                    <h4><a href="/haberler/@item.Url">@item.Title</a></h4>
+                                    <time datetime="2020-01-01">@item.DateCreated</time>
+                                </div>
+                            }
+
+
+                        </div><!-- End sidebar recent posts-->
+
+                        <h3 style="margin-top:45px;" class="sidebar-title">Etiketler</h3>
+                        <div class="sidebar-item tags">
+                            <ul>
+                                @foreach (var item in tags)
+                                {
+                                    <li><a style="cursor:pointer;" href="/sorular">@item.Key (@item.Value)</a></li>
+                                }
+                            </ul>
+                        </div><!-- End sidebar tags-->
+
+
+
+
+
+
+                    </div><!-- End sidebar -->
+
+                </div><!-- End blog sidebar -->
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Bilgilendirme</h5>
+                    <button onclick="hidePopUp();" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Kodunuz geçersizdir.
+                </div>
+                <div class="modal-footer">
+                    <button onclick="hidePopUp(); return false;" type="button" class="btn btn-primary">Tekrar Dene</button>
+                    <button onclick="location.href='/'; return false;" type="button" class="btn btn-success">Anasayfa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/yuzdeHesaplama.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>

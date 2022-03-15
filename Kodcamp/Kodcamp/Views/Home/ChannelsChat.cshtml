@@ -1,0 +1,93 @@
+﻿@{
+    string channelName = ViewData["ChannelName"].ToString();
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="/css/chat.css" type="text/css" rel="stylesheet" />
+    <script src="/libraries/signalr.min.js"></script>
+    <script src="/libraries/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+    <div class="container" style="margin-top:100px;">
+
+        <h4> @channelName </h4>
+
+        @*<label>Seçilen Kişi:</label>*@
+        <input type="text" value="" id="hiddenValue" hidden />
+        @*<br />*@
+
+        <div id="alertLogin" class="alert alert-danger" role="alert">
+            Sisteme giriş yapabilmek için kullanıcı adınızı girmeniz gerekir.
+        </div>
+
+        @*Odaya giriş*@
+        <input type="text" value="" id="txtNickname" placeholder="nickname gir" required />
+        <button type="button" class="btn btn-success leftButton" id="btnLogin"> Giriş Yap </button>
+
+
+
+        @*Odaya girildi alerti*@
+        <div class="alert alert-success" id="clientDurumMesaj" style="display:none;">
+        </div>
+
+
+        <div class="messaging d-none" id="loginSystem">
+            <div class="inbox_msg">
+
+                @*Mesajlaşılan İnsanlar*@
+                <div class="inbox_people">
+                    <div class="headind_srch">
+                        <div class="recent_heading">
+                            <h4>Kullanıcılar</h4>
+                        </div>
+
+                    </div>
+                    <div class="inbox_chat">
+                        <div class="chat_list active_chat">
+                            <div id="userList" class="list-group userListBody" style="width:300px; border:2px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hiddenValue2" class="alert alert-success d-none" role="alert" style="margin-left:600px; width:400px; height:50px; text-align:center">
+                </div>
+
+
+                @*Mesajlar*@
+                <div class="mesgs">
+                    <div class="msg_history">
+                        <div id="allMessages" class="incoming_msg">
+                        </div>
+                    </div>
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <input id="txtSender" onkeypress="return searchKeyPress(event);" type="text" class="write_msg" placeholder="Type a message" />
+                            <button id="btnSend" class="msg_send_btn" type="button">
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var channelName = @Html.Raw(Json.Serialize(channelName));
+    </script>
+
+    <script src="/js/channelsChat.js"></script>
+</body>
+</html>
